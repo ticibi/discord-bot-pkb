@@ -1,0 +1,45 @@
+CREATE TABLE IF NOT EXISTS guilds(
+    Id TEXT PRIMARY KEY,
+    Prefix TEXT DEFAULT "/",
+    Channel TEXT DEFAULT "pkb-general",
+    Broadcast TEXT DEFAULT "pkb-broadcast",
+    Points INT DEFAULT 0
+);
+
+CREATE TABLE IF NOT EXISTS members(
+    Id TEXT PRIMARY KEY,
+    DateJoined TEXT NOT NULL,
+    Points INT DEFAULT 0
+);
+
+CREATE TABLE IF NOT EXISTS economy(
+    Id TEXT PRIMARY KEY,
+    Bank INT DEFAULT 1000
+);
+
+CREATE TABLE IF NOT EXISTS daily(
+    Id TEXT PRIMARY KEY,
+    Claimed BIT DEFAULT 0,
+    Dailies INT DEFAULT 0
+);
+
+CREATE TABLE IF NOT EXISTS lottery(
+    Id TEXT PRIMARY KEY,
+    Tickets INT DEFAULT 0
+);
+
+CREATE TABLE IF NOT EXISTS voting(
+    Id TEXT PRIMARY KEY,
+    Voted BIT DEFAULT 0,
+    Votes INT DEFAULT 0
+);
+
+CREATE TABLE IF NOT EXISTS metrics(
+    Id TEXT PRIMARY KEY,
+    Commands INT DEFAULT 0
+);
+
+CREATE TABLE IF NOT EXISTS devs(
+    Id INT PRIMARY KEY,
+    Perms INT DEFAULT 0
+)

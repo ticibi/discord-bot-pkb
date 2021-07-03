@@ -1,0 +1,28 @@
+﻿{
+    "commands": [
+        "addall",
+        "runll",
+        "report",
+        "exchangebank",
+        "random",
+        "flipcoin",
+        "lottery",
+        "youtube",
+        "ping",
+        "points",
+        "bank",
+        "exchangepoints",
+        "load",
+        "transfer",
+        "unload",
+        "toppoints",
+        "reload",
+        "vote",
+        "joinlotto",
+        "global",
+        "bonus",
+        "clear",
+        "updatecmds",
+        "setprefix"
+    ]
+}
