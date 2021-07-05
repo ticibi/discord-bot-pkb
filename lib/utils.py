@@ -1,7 +1,6 @@
 import json
 
 
-# handling files
 def read_json(filename):
     with open(f"{filename}.json", "r", encoding="utf-8-sig") as f:
         data = json.load(f)
@@ -17,7 +16,6 @@ def read_txt(filename):
 def fmat(number):
     return "{:,}".format(number)
 
-# handling emojis
 async def add_emojis(emojis, message):
     for emoji in emojis:
         await message.add_reaction(emoji)
