@@ -19,8 +19,8 @@ def fmat(number):
 
 # handling emojis
 async def add_emojis(emojis, message):
-        for emoji in emojis:
-            await message.add_reaction(emoji)
+    for emoji in emojis:
+        await message.add_reaction(emoji)
 
 async def remove_emojis(emojis, message):
     for emoji in emojis:
