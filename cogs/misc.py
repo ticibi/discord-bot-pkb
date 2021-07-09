@@ -1,5 +1,7 @@
 import random
+from discord import Embed
 from discord.ext import commands
+from lib import icons
 
 
 class MiscCommands(commands.Cog, name='misc'):
@@ -9,6 +11,16 @@ class MiscCommands(commands.Cog, name='misc'):
     @commands.Cog.listener()
     async def on_ready(self):
         print(f'{__name__} extension loaded')
+
+    @commands.command(name='info')
+    async def bot_info(self, ctx):
+        desc = ''
+        embed = Embed(
+            title='',
+            description=desc,
+        )
+        embed.set_author(name='PudgeyKitty Bot Info', icon_url=icons.info)
+        await ctx.send(embed=embed)
 
     @commands.command(name='ping')
     async def ping(self, ctx):

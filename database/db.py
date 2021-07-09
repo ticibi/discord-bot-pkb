@@ -76,6 +76,10 @@ def insert_all(member):
         'INSERT OR IGNORE INTO metrics (Id) VALUES (?)',
         member.id,
     )
+    query(
+        'INSERT OR IGNORE INTO badges (Id) VALUES (?)',
+        member.id,
+    )
 
 def delete_all(member):
     query(
@@ -100,6 +104,10 @@ def delete_all(member):
     )
     query(
         'DELETE FROM metrics WHERE Id = ?',
+        member.id,
+    )
+    query(
+        'DELETE FROM badges WHERE Id = ?',
         member.id,
     )
 

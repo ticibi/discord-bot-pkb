@@ -35,6 +35,7 @@ class Daily(commands.Cog, name='daily'):
             ctx.message.author.id,
         )
         if claimed == 1:
+            await ctx.send('you\'ve already claimed a bonus today')
             return
         embed = Embed(
             title='',
@@ -58,10 +59,10 @@ class Daily(commands.Cog, name='daily'):
 
         embed3 = Embed(
             title=f'{DAILY_ICON*i}',
-            description=f'{ctx.message.author.name} has {i} stars!',
+            description=f'{ctx.message.author.name} won ${fmat(i*DAILY_REWARD)}!',
             color=colors.GOLD,
         )
-        embed3.set_author(name=f'won ${fmat(i*DAILY_REWARD)}!', icon_url=icons.bonus)
+        embed3.set_author(name=f'{i} stars!', icon_url=icons.bonus)
         await msg.edit(embed=embed3)
 
         db.query(

@@ -8,7 +8,7 @@ LAVALINK = os.environ.get('LAVALINK')
 # DEV_IDS allows the use of
 # bot commands in any channel
 DEV_IDS = [
-    os.environ.get('DEV_ID'),
+    664612418672132116,
 ]
 
 OWNER_PERMS = [
@@ -21,6 +21,9 @@ CATEGORY = 'pkbot channels'
 GENERAL = 'pkb-general'
 BROADCAST = 'pkb-broadcast'
 LOG = 'pkb-modlog'
+
+CUSTOM_CHANNEL_CATEGORY = 'custom channels'
+CUSTOM_CHANNEL_CATEGORY_ID = 861780900307664896
 
 MESSAGES = {
     "on_guild_join":"",

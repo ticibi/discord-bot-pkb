@@ -1,0 +1,47 @@
+{  
+    "0": {
+        "name":"commander!",
+        "description":"use 1000 commands",
+        "reward":100
+    },
+    "1":{
+        "name":"points hoarder",
+        "description":"gain a total of 1000 points",
+        "reward":100
+    },
+    "2":{
+        "name":"lucky",
+        "description":"win the lottery",
+        "reward":100
+    },
+    "3":{
+        "name":"super lucky",
+        "description":"win $10,000 in the lottery",
+        "reward":1000
+    },
+    "4":{
+        "name":"daily grind",
+        "description":"claim 30 daily bonuses",
+        "reward":1000
+    },
+    "5":{
+        "name":"veteran",
+        "description":"use pkb for one year",
+        "reward":10000
+    },
+    "6":{
+        "name":"rich boi",
+        "description":"have $100,000 in your pkb bank",
+        "reward":1000
+    },
+    "7":{
+        "name":"millionaire",
+        "description":"have $1,000,000 in your pkb bank",
+        "reward":10000
+    },
+    "8":{
+        "name":"secret",
+        "description":"????",
+        "reward":100000
+    }
+}

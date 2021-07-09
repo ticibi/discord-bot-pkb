@@ -14,11 +14,9 @@ class Events(commands.Cog, name='events'):
     async def on_voice_state_update(self, member, before, after):
         if member == self.client:
             return
-        print('before',before)
-        print('after', after)
         channel = discord.utils.get(member.guild.channels, name='🐀tarkov')
-        await channel.send(f'{member.name} joined', tts=True, delete_after=2)
-        await channel.send(f'{member.name} joined {after.channel.name}', delete_after=60)
+        #await channel.send(f'{member.name} joined', tts=True, delete_after=2)
+        #await channel.send(f'{member.name} joined {after.channel.name}', delete_after=60)
     
 def setup(client):
     client.add_cog(Events(client))

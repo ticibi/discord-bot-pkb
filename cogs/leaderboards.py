@@ -1,7 +1,7 @@
 from discord import Embed
 from discord.ext import commands
 from database import db
-from config import POINTS_PER_BANK
+from config import POINTS_RATE
 
 
 class Leaderboards(commands.Cog, name='leaderboards'):
@@ -80,12 +80,12 @@ class Leaderboards(commands.Cog, name='leaderboards'):
         )
         db.query(
             'UPDATE economy SET Bank = (Bank + ?) WHERE Id = ?',
-            amount//POINTS_PER_BANK,
+            amount//POINTS_RATE,
             _id,
         )
         name = ctx.message.author.name
         await ctx.send(
-            f'{name} exchanged {amount} pts for ${amount//POINTS_PER_BANK}!'
+            f'{name} exchanged {amount} pts for ${amount//POINTS_RATE}!'
         )
 
 def setup(client):

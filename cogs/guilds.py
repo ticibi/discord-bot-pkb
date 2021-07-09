@@ -11,18 +11,21 @@ class Guilds(commands.Cog, name='guilds'):
     async def create_channels(self, guild):
         overwrites = {
             guild.default_role: discord.PermissionOverwrite(
-                read_messages=True, send_messages=True
+                read_messages=True, 
+                send_messages=True
             )
         }
         log_overwrites = {
             guild.default_role: discord.PermissionOverwrite(read_messages=False)
         }
         category = await guild.create_category(
-            CATEGORY, overwrites=overwrites
+            CATEGORY, 
+            overwrites=overwrites
         )
         if GENERAL not in guild.channels:
             general_channel = await guild.create_text_channel(
-                GENERAL, category=category
+                GENERAL, 
+                category=category
             )
             await general_channel.send(MESSAGES['welcome_general_channel'])
         if BROADCAST not in guild.channels:

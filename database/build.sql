@@ -42,4 +42,14 @@ CREATE TABLE IF NOT EXISTS metrics(
 CREATE TABLE IF NOT EXISTS devs(
     Id INT PRIMARY KEY,
     Perms INT DEFAULT 0
-)
+);
+
+CREATE TABLE IF NOT EXISTS badges(
+    Id INT PRIMARY KEY,
+    Badges TEXT DEFAULT 'N N N N N N N N N'
+);
+
+CREATE TABLE IF NOT EXISTS custom_channels(
+    ChannelId INT PRIMARY KEY,
+    OwnerId INT NOT NULL
+);

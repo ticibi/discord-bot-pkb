@@ -5,6 +5,7 @@ import discord
 from discord.ext import commands
 from config import VERSION, TOKEN, DEV_IDS, OWNER_PERMS
 from database import db
+from lib.utils import read_json
 
 
 def get_prefix(bot, message):
@@ -39,19 +40,37 @@ async def on_ready():
 async def on_message(message):
     if message.author == bot:
         return
-
+    _commands = read_json('data/commands')
     data = db.one(
         "SELECT Channel, Prefix FROM guilds WHERE Id = ?", message.guild.id
     )
-
     channel = discord.utils.get(message.guild.channels, name=data[0])
     pfx = data[1]
-    
     if (
         message.author.permissions_in(message.channel).value in OWNER_PERMS
         or message.channel == channel or message.author.id in DEV_IDS
     ):
         await bot.process_commands(message)
+    if(
+        message.content.startswith(pfx)
+        and message.content.strip(str(pfx)).lower() in _commands['commands']
+    ):
+        db.query(
+            'UPDATE metrics SET Commands = (Commands + ?) WHERE Id = ?',
+            1,
+            message.author.id,
+        )
+        cmd_count = db.one(
+            'SELECT Commands FROM metrics WHERE Id = ?',
+            message.author.id,
+        )[0]
+        if cmd_count >= 1000:
+            db.query(
+                'UPDATE members SET Points = (Points + ?) WHERE Id = ?',
+                1000,
+                message.author.id,
+            )
+            await channel.send(f'{message.author.mention} has unlocked an achievement!\n+1,000 pts')
     elif message.content.startswith(pfx):
         print("cannot process commands in this channel")
         await message.channel.send(

@@ -1,4 +1,4 @@
-from discord import Embed, utils
+from discord import Embed, Member, utils
 from discord.ext import commands
 from database import db
 from lib import colors, icons
@@ -83,7 +83,7 @@ class Admin(commands.Cog, name='admin'):
         await channel.send(embed=embed)   
 
     @commands.is_owner()
-    @commands.command(name='updatecmds')
+    @commands.command(name='updatecmds', aliases=['updatecommands'])
     async def update_commands_list(self, ctx):
         _commands = read_json('data/commands')
         _commands['commands'] = []
@@ -99,6 +99,15 @@ class Admin(commands.Cog, name='admin'):
         for member in ctx.guild.members:
             db.insert_all(member)
         await ctx.send('added all members to db')
+
+    @commands.is_owner()
+    @commands.command(name='adddev')
+    async def add_dev(self, ctx, *, member:Member):
+        db.query(
+            'INSERT OR IGNORE INTO devs (Id) VALUES (?)',
+            member.id,
+        )
+        await ctx.send(f'{member.name} added to devs')
 
 def setup(client):
     client.add_cog(Admin(client))
