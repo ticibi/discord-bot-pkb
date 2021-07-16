@@ -8,7 +8,7 @@ LAVALINK = os.environ.get('LAVALINK')
 # DEV_IDS allows the use of
 # bot commands in any channel
 DEV_IDS = [
-    664612418672132116,
+    #put discord IDs here,
 ]
 
 OWNER_PERMS = [
