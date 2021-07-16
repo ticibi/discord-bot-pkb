@@ -51,13 +51,6 @@ class Guilds(commands.Cog, name='guilds'):
         print(f'{__name__} extension loaded')
 
     @commands.Cog.listener()
-    async def on_guild_remove(self, guild):
-        db.query(
-            'DELETE FROM guilds WHERE Id = ?',
-            guild.id,
-        )
-
-    @commands.Cog.listener()
     async def on_guild_join(self, guild):
         db.query(
             'INSERT OR IGNORE INTO guilds (Id) VALUES (?)',
@@ -72,7 +65,14 @@ class Guilds(commands.Cog, name='guilds'):
                 db.insert_all(member)
             except Exception as e:
                 raise e
-
+    
+    @commands.Cog.listener()
+    async def on_guild_remove(self, guild):
+        db.query(
+            'DELETE FROM guilds WHERE Id = ?',
+            guild.id,
+        )
+                
 
 def setup(client):
     client.add_cog(Guilds(client))

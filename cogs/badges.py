@@ -12,13 +12,6 @@ class Badges(commands.Cog, name='badges'):
     async def on_ready(self):
         print(f'{__name__} extension loaded')
 
-    @commands.Cog.listener()
-    async def on_member_join(self, member):
-        db.query(
-            'INSERT OR IGNORE INTO badges (Id) VALUES (?)', 
-            member.id,
-        )
-
     @commands.command(name='badges', aliases=['mybadges'])
     async def display_badges(self, ctx):
         badges_raw = db.one(

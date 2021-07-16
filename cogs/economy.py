@@ -13,14 +13,6 @@ class Economy(commands.Cog, name='economy'):
     async def on_ready(self):
         print(f'{__name__} extension loaded')
 
-    @commands.Cog.listener()
-    async def on_member_join(self, member):
-        db.query(
-            'INSERT OR IGNORE INTO members (Id, DateJoined) VALUES (?,?)', 
-            member.id, 
-            datetime.utcnow(),
-        )
-
     @commands.command(name='points', aliases=['mypoints', 'mypts', 'pts'])
     async def check_points(self, ctx):
         points = db.one(

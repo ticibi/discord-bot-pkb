@@ -15,13 +15,6 @@ class Lottery(commands.Cog, name='lottery'):
     async def on_ready(self):   
         print(f'{__name__} extension loaded')
 
-    @commands.Cog.listener()
-    async def on_member_join(self, member):
-        db.query(
-            'INSERT OR IGNORE INTO lottery (Id) VALUES (?)', 
-            member.id,
-        )
-
     @commands.command(name='lottery', aliases=['lotto'])
     async def lottery(self, ctx):
         participants = db.all('SELECT Id, Tickets FROM lottery')

@@ -19,13 +19,6 @@ class Daily(commands.Cog, name='daily'):
     async def on_ready(self):
         print(f'{__name__} extension loaded')
 
-    @commands.Cog.listener()
-    async def on_member_join(self, member):
-        db.query(
-            'INSERT OR IGNORE INTO daily (Id) VALUES (?)',
-            member.id,
-        )
-
     @commands.command(name='bonus', aliases=['daily', 'pp'])
     async def daily_bonus(self, ctx):
         if not db.check_exists(ctx.message.author.id):
