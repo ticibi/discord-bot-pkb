@@ -23,7 +23,7 @@ BROADCAST = 'pkb-broadcast'
 LOG = 'pkb-modlog'
 
 CUSTOM_CHANNEL_CATEGORY = 'custom channels'
-CUSTOM_CHANNEL_CATEGORY_ID = 861780900307664896
+CUSTOM_CHANNEL_CATEGORY_ID = #put channel ID here
 
 MESSAGES = {
     "on_guild_join":"",
